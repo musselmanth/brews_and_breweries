@@ -1,3 +1,3 @@
 class Beer < ApplicationRecord
-  belongs_to :artist
+  belongs_to :brewery
 end
