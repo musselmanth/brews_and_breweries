@@ -1,4 +1,5 @@
 <h1>Breweries</h1>
 <% @breweries.each do |brewery| %>
-  <h3><%= brewery.name %></h3>
+  <span style="font-size:16px; font-weight:bold;"><%= brewery.name %></span><br>
+  <span style="font-size:10px">Added to records: <%= brewery.created_at %></span><br><br>
 <% end %>
