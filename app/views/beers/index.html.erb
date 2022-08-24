@@ -2,5 +2,5 @@
 <% @beers.each do |beer| %>
   <h3><%= beer.name %></h3>
   <p><%= beer.brewery.name %> | Style: <%= beer.style %><br>
-  ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Limited Release?: <%= beer.limited_release ? "Yes" : "No" %>
+  ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Limited Release?: <%= beer.limited_release ? "Yes" : "No" %></p>
 <% end %>
