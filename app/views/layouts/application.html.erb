@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RelationalRails</title>
+    <title>Breweries and Beers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <div style="position: absolute; right: 0; top: 0; padding: 15px; font-size: 13; font-weight: bold;"><%= link_to "View All Breweries", "/breweries" %> | <%= link_to "View All Beers", "/beers" %></div>
     <%= yield %>
+    
   </body>
 </html>
