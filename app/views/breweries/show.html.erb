@@ -4,3 +4,4 @@
 <p>Brewer's Association Member: <%= @brewery.ba_member ? "Yes" : "No" %></p>
 <p>Annual Production: <%= number_with_delimiter(@brewery.annual_production, :delimiter => ',') %> beer barrels</p>
 <p>Number of beers on record: <%= @brewery.beer_count %></p>
+<p><%= link_to "View #{@brewery.name} Beers", "/breweries/#{@brewery.id}/beers" %></p>
