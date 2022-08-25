@@ -29,8 +29,13 @@ RSpec.describe 'breweries#index', type: :feature do
     visit("/breweries/#{@odell.id}")
 
     expect(page).to have_content("Number of beers on record: #{@odell.beer_count}")
-    save_and_open_page
   end
 
+  it 'has a link to show the children for the particular parent' do
+    visit("/breweries/#{@bells.id}")
+    expect(page).to have_content("View #{@bells.name} Beers")
+    click_link("View #{@bells.name} Beers")
+    expect(current_path).to eq("/breweries/#{@bells.id}/beers")
+  end
 
 end
