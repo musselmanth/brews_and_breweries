@@ -25,6 +25,11 @@ class BreweriesController < ApplicationController
     redirect_to "/breweries/#{brewery.id}"
   end
 
+  def destroy
+    Brewery.destroy(params[:brewery_id])
+    redirect_to("/breweries")
+  end
+
   def brewery_params
     params.permit(:name, :ba_member, :city, :state, :founded, :annual_production)
   end

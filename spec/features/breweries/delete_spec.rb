@@ -20,7 +20,7 @@ RSpec.describe 'breweries#delete', type: :feature do
     expect(page).to_not have_content(@bells.name)
     expect(page).to have_content(@odell.name)
 
-    visit("breweries/#{odell.id}")
+    visit("/breweries/#{@odell.id}")
     expect(page).to have_button("Delete #{@odell.name}")
 
     click_button("Delete #{@odell.name}")
@@ -29,4 +29,29 @@ RSpec.describe 'breweries#delete', type: :feature do
     expect(page).to_not have_content(@bells.name)
     expect(page).to_not have_content(@odell.name)
   end
+
+  it 'can delete breweries even when they have beers' do
+    two_hearted = @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", in_production: true)
+    oberon = @bells.beers.create(name: "Oberon", abv: 5.8, ibu: 10, style:"Wheat", in_production: true)
+    ninety_shilling = @odell.beers.create(name: "90 Shilling", abv: 5.3, ibu: 27, style:"Red Ale", in_production: true)
+
+    visit("/breweries")
+    expect(page).to have_content(@bells.name)
+    visit("/beers")
+    expect(page).to have_content(two_hearted.name)
+    expect(page).to have_content(oberon.name)
+    expect(page).to have_content(ninety_shilling.name)
+
+    visit("/breweries/#{@bells.id}")
+    click_button("Delete #{@bells.name}")
+
+    expect(current_path).to eq("/breweries")
+    expect(page).to_not have_content(@bells.name)
+
+    visit("/beers")
+    expect(page).to_not have_content(two_hearted.name)
+    expect(page).to_not have_content(oberon.name)
+    expect(page).to have_content(ninety_shilling.name)
+  end
+    
 end
