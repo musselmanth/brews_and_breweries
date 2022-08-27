@@ -3,10 +3,10 @@
 <table style="width: 34%">
   <% @breweries.each do |brewery| %>
 
-    <td><table style="border:2px solid black; width: 100%; border-collapse: collapse">
+    <td><table id="<%= brewery.id %>" style="border:2px solid black; width: 100%; border-collapse: collapse">
       <tr style="border-bottom: 2px solid black">
         <td style="padding: 5px"><h3 style="margin:0"><%= link_to brewery.name, "/breweries/#{brewery.id}" %></h3></td>
-        <td style="text-align: right; padding: 5px">Links</td>
+        <td style="text-align: right; padding: 5px"><%= link_to "Edit", "/breweries/#{brewery.id}/edit" %></td>
       </tr>
       <tr>
         <td colspan="2" style="padding: 5px">
