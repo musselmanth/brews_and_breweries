@@ -31,6 +31,6 @@ RSpec.describe 'breweries#index', type: :feature do
     expect(page).to have_content(@crooked_stave.created_at)
     expect(page).to have_content(@bells.created_at)
     expect(page).to have_content(@odell.created_at)
-    save_and_open_page
+    
   end
 end

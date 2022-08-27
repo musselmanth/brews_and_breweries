@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_08_24_021943) do
     t.float "abv"
     t.integer "ibu"
     t.string "style"
-    t.boolean "limited_release"
+    t.boolean "in_production"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brewery_id"
