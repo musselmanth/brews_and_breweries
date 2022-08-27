@@ -1,0 +1,32 @@
+<%= form_with url: "/breweries/#{@brewery.id}", method: :patch, local: true do |form| %>
+  <table>
+    <tr><td colspan="2"><h2>Edit <%= "#{@brewery.name}" %> Information</h2></td></tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :name, "Name: " %></td>
+      <td><%= form.text_field :name, value: @brewery.name %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :city, "City: " %></td>
+      <td><%= form.text_field :city, value: @brewery.city %> </td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :state, "State: " %></td>
+      <td><%= form.text_field :state, value: @brewery.state %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :founded, "Year Founded: " %></td>
+      <td><%= form.text_field :founded, value: @brewery.founded %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :annual_production, "Annual Production: " %></td>
+      <td><%= form.text_field :annual_production, value: @brewery.annual_production %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :ba_member, "BA Member: " %></td>
+      <td><%= form.check_box :ba_member, checked: @brewery.ba_member %></td>
+    </tr>
+    <tr><td colspan="2" height="15px"> </td></tr>
+    <tr><td></td><td><%= form.submit "Update Brewery" %></td></tr>
+  </table>
+
+<% end %>

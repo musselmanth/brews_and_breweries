@@ -1,7 +1,9 @@
-<h1><%= @brewery.name %></h1>
+<h2><%= @brewery.name %></h2>
+<p><%= link_to "View #{@brewery.name} Beers", "/breweries/#{@brewery.id}/beers" %></p>
 <p>Location: <%= @brewery.city + ", " + @brewery.state %></p>
 <p>Founded: <%= @brewery.founded %></p>
 <p>Brewer's Association Member: <%= @brewery.ba_member ? "Yes" : "No" %></p>
 <p>Annual Production: <%= number_with_delimiter(@brewery.annual_production, :delimiter => ',') %> beer barrels</p>
 <p>Number of beers on record: <%= @brewery.beer_count %></p>
-<p><%= link_to "View #{@brewery.name} Beers", "/breweries/#{@brewery.id}/beers" %></p>
+
+<%= button_to "Edit #{@brewery.name} Info", "/breweries/#{@brewery.id}/edit", method: :get %>
