@@ -1,4 +1,51 @@
-  <h2><%= @beer.name %></h2>
-  <p><%= link_to @beer.brewery.name, "/breweries/#{@beer.brewery.id}" %> | Style: <%= @beer.style %><br>
-  ABV: <%= @beer.abv %>% | IBUs: <%= @beer.ibu %> | Currently In Production?: <%= @beer.in_production ? "Yes" : "No" %>
-  <%= button_to "Edit #{@beer.name} Info", "/beers/#{@beer.id}/edit", method: :get %>
+  <table style="width:34%">
+    <tr><td colspan="2" style="text-align: center;"><h2 style="margin: 25px"><%= @beer.name %><h2></td></tr>
+    <tr>
+      <td style="text-align:right; font-weight: bold">
+        Brewery: &nbsp&nbsp
+      </td>
+      <td>
+        <%= link_to @beer.brewery.name, "/breweries/#{@beer.brewery.id}" %>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align:right; font-weight: bold">
+        Style: &nbsp&nbsp
+      </td>
+      <td>
+        <%= @beer.style %>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align:right; font-weight: bold">
+        ABV:&nbsp&nbsp
+      </td>
+      <td>
+        <%= @beer.abv %>%
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align:right; font-weight: bold">
+        IBUs:&nbsp&nbsp
+      </td>
+      <td>
+        <%= @beer.ibu %>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align:right; font-weight: bold">
+        Currently in Production?:&nbsp&nbsp
+      </td>
+      <td>
+        <%= @beer.in_production ? "Yes" : "No" %>
+      </td>
+    </tr>  
+    <tr style="height:15px"><tr>
+    <tr><td colspan="2" style="text-align:center"><%= button_to "Edit #{@beer.name} Info", "/beers/#{@beer.id}/edit", method: :get %></td></tr>
+
+  </table>
+
