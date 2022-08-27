@@ -1,9 +1,23 @@
 <h2><%= @brewery.name %> Beers</h2>
 <p><%= link_to "Return to Brewery Page", "/breweries/#{@brewery.id}" %></p>
 <p><%= link_to "Sort By Name", sort_by: :name %>
-<% @beers.each do |beer| %>
-  <h3><%= link_to beer.name, "/beers/#{beer.id}" %></h3>
-  <p>Style: <%= beer.style %> | ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Currently In Production?: <%= beer.in_production ? "Yes" : "No" %></p>
-<% end %>
-<br>
+<table style="width: 34%">
+  <% @beers.each do |beer| %>
+      <td><table id="<%= beer.id %>"style="border:2px solid black; width: 100%; border-collapse: collapse">
+        <tr style="border-bottom: 2px solid black">
+          <td style="padding: 5px"><h3 style="margin:0"><%= link_to beer.name, "/beers/#{beer.id}" %></h3></td>
+          <td style="text-align: right; padding: 5px"><%= link_to "Edit", "/beers/#{beer.id}/edit" %></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding: 5px">
+            <p style="margin:0; padding: 0;"><%= link_to beer.brewery.name, "/breweries/#{beer.brewery.id}" %> | Style: <%= beer.style %><br>
+            ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Currently In Production?: <%= beer.in_production ? "Yes" : "No" %></p>
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr style="height: 15px"></tr>
+  <% end %>
+</table>
+
 <%= button_to "Add New Beer", "/breweries/#{@brewery.id}/beers/new", method: :get %>
