@@ -24,4 +24,16 @@ RSpec.describe 'breweries_beers#index', type: :feature do
     expect(page.has_content?(@ninety_shilling.abv)).to be false
     
   end
+
+  it 'has a link to sort them by name' do
+    visit("/breweries/#{@bells.id}/beers")
+
+    expect(page).to have_link("Sort By Name")
+    expect("#{@oberon.name}").to appear_before("#{@hopslam.name}")
+
+    click_link("Sort By Name")
+
+    expect("#{@hopslam.name}").to appear_before("#{@oberon.name}")
+  end
+
 end

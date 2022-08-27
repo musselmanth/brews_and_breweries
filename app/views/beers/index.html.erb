@@ -1,4 +1,4 @@
-<h2>Beers</h2>
+<h2>Beers Currently In Production</h2>
 <% @beers.each do |beer| %>
   <h3><%= link_to beer.name, "/beers/#{beer.id}" %></h3>
   <p><%= link_to beer.brewery.name, "/breweries/#{beer.brewery.id}" %> | Style: <%= beer.style %><br>
