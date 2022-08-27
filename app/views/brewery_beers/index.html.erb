@@ -1,6 +1,6 @@
 <h2><%= @brewery.name %> Beers</h2>
+<p><%= link_to "Return to Brewery Page", "/breweries/#{@brewery.id}" %></p>
 <% @beers.each do |beer| %>
   <h3><%= link_to beer.name, "/beers/#{beer.id}" %></h3>
   <p>Style: <%= beer.style %> | ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Limited Release?: <%= beer.in_production ? "Yes" : "No" %></p>
 <% end %>
-<p><%= link_to "Return to Brewery Page", "/breweries/#{@brewery.id}" %>
