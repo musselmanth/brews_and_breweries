@@ -37,7 +37,7 @@ RSpec.describe 'Edit existing Brewery' do
 
       fill_in("City", with: "Kalamazoo")
 
-      click_button("Update #{@bells.name}")
+      click_button("Update Brewery")
 
       expect(current_path).to eq("/breweries/#{@bells.id}")
 

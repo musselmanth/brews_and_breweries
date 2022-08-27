@@ -13,7 +13,7 @@ require 'rails_helper'
 
 RSpec.describe 'Create a new beer' do
 
-  before(:all) do
+  before(:each) do
     @stone = Brewery.create(name: "Stone Brewing", city:"Escondido", state:"CA", ba_member: true, annual_production: 325000, founded: 1996)
   end
 

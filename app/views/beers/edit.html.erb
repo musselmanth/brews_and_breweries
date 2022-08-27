@@ -1,0 +1,28 @@
+<%= form_with url: "/beers/#{@beer.id}", method: :patch, local: true do |form| %>
+  <table>
+    <tr><td colspan="2"><h2>Edit <%= "#{@beer.name}" %> Information</h2></td></tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :name, "Name: " %></td>
+      <td><%= form.text_field :name, value: @beer.name %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :style, "Style: " %></td>
+      <td><%= form.text_field :style, value: @beer.style %> </td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :abv, "ABV: " %></td>
+      <td><%= form.text_field :abv, value: @beer.abv %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :ibu, "IBU: " %></td>
+      <td><%= form.text_field :ibu, value: @beer.ibu %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :in_production, "Currently In Production: " %></td>
+      <td><%= form.check_box :in_production, checked: @beer.in_production %></td>
+    </tr>
+    <tr><td colspan="2" height="15px"> </td></tr>
+    <tr><td></td><td><%= form.submit "Update Beer" %></td></tr>
+  </table>
+
+<% end %>
