@@ -18,12 +18,16 @@ RSpec.describe 'Create a new Brewery' do
     it 'links to brewery/new' do
       visit "/breweries"
 
-      expect(page).to have_content("Add New Brewery")
+      expect(page).to have_button("Add New Brewery")
       
       click_on("Add New Brewery")
 
       expect(current_path).to eq("/breweries/new")
     end
+
+  end
+
+  describe 'can add new brewery' do
 
     it 'has a form that can create a new artist' do
       visit("/breweries/new")

@@ -6,3 +6,4 @@
 <p>Annual Production: <%= number_with_delimiter(@brewery.annual_production, :delimiter => ',') %> beer barrels</p>
 <p>Number of beers on record: <%= @brewery.beer_count %></p>
 
+<%= button_to "Edit #{@brewery.name} Info", "/breweries/#{@brewery.id}/edit", method: :get %>

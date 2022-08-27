@@ -15,7 +15,7 @@ RSpec.describe 'beers#show', type: :feature do
     expect(page).to have_content("Bell's Brewery")
     expect(page).to have_content("ABV: 10.0%")
     expect(page).to have_content("IBUs: 65")
-    expect(page).to have_content("Limited Release?: Yes")
+    expect(page).to have_content("Currently In Production?: Yes")
     expect(page).to have_content("Style: Double IPA")
   end
 end
