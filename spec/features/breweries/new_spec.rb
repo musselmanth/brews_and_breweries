@@ -29,7 +29,7 @@ RSpec.describe 'Create a new Brewery' do
 
   describe 'can add new brewery' do
 
-    it 'has a form that can create a new artist' do
+    it 'has a form that can create a new beer' do
       visit("/breweries/new")
       expect(page).to have_content("Add New Brewery")
 
