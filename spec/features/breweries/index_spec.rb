@@ -31,7 +31,24 @@ RSpec.describe 'breweries#index', type: :feature do
     expect(page).to have_content(@crooked_stave.created_at)
     expect(page).to have_content(@bells.created_at)
     expect(page).to have_content(@odell.created_at)
-    
+  end
+
+  it 'has links to edit the breweries' do
+    visit("/breweries")
+
+    expect(page).to have_content("Edit")
+
+    within("table##{@bells.id}") do
+      click_link("Edit")
+      expect(current_path).to eq("/breweries/#{@bells.id}/edit")
+    end
+
+    visit("/breweries")
+
+    within("table##{@odell.id}") do
+      click_link("Edit")
+      expect(current_path).to eq("/breweries/#{@odell.id}/edit")
+    end
   end
 
 end

@@ -36,4 +36,23 @@ RSpec.describe 'breweries_beers#index', type: :feature do
     expect("#{@hopslam.name}").to appear_before("#{@oberon.name}")
   end
 
+  it 'has a link to edit each beer' do
+    visit("/breweries/#{@bells.id}/beers")
+    expect(page).to have_link("Edit")
+
+    within("table##{@oberon.id}") do
+      click_link("Edit")
+      expect(current_path).to eq("/beers/#{@oberon.id}/edit")
+    end
+  end
+
+  it 'each edit link goes to the right beer' do
+    visit("/breweries/#{@bells.id}/beers")
+    within("table##{@hopslam.id}") do
+      click_link("Edit")
+      expect(current_path).to eq("/beers/#{@hopslam.id}/edit")
+    end
+  end
+
+
 end
