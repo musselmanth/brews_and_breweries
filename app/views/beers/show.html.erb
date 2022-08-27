@@ -1,3 +1,3 @@
-  <h1><%= @beer.name %></h1>
+  <h2><%= @beer.name %></h2>
   <p><%= link_to @beer.brewery.name, "/breweries/#{@beer.brewery.id}" %> | Style: <%= @beer.style %><br>
-  ABV: <%= @beer.abv %>% | IBUs: <%= @beer.ibu %> | Limited Release?: <%= @beer.in_production ? "Yes" : "No" %>
+  ABV: <%= @beer.abv %>% | IBUs: <%= @beer.ibu %> | Currently In Production?: <%= @beer.in_production ? "Yes" : "No" %>

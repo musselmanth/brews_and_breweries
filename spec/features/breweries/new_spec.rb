@@ -18,9 +18,9 @@ RSpec.describe 'Create a new Brewery' do
     it 'links to brewery/new' do
       visit "/breweries"
 
-      expect(page).to have_content("Input New Brewery")
+      expect(page).to have_content("Add New Brewery")
       
-      click_on("Input New Brewery")
+      click_on("Add New Brewery")
 
       expect(current_path).to eq("/breweries/new")
     end
@@ -30,7 +30,7 @@ RSpec.describe 'Create a new Brewery' do
       expect(page).to have_content("Add New Brewery")
 
       fill_in("Name", with: "Founders Brewing Company")
-      check("Brewer's Association Member")
+      check("BA Member")
 
       fill_in("City", with: "Grand Rapids")
       fill_in("State", with: "MI")
@@ -43,7 +43,6 @@ RSpec.describe 'Create a new Brewery' do
 
       expect(page).to have_content("Founders Brewing Company")
     end
-
 
   end
 
