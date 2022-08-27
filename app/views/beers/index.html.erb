@@ -1,6 +1,20 @@
 <h2>Beers Currently In Production</h2>
+<table style="width: 34%">
 <% @beers.each do |beer| %>
-  <h3><%= link_to beer.name, "/beers/#{beer.id}" %></h3>
-  <p><%= link_to beer.brewery.name, "/breweries/#{beer.brewery.id}" %> | Style: <%= beer.style %><br>
-  ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Currently In Production?: <%= beer.in_production ? "Yes" : "No" %></p>
+  <tr>
+    <td><table style="border:2px solid black; width: 100%; border-collapse: collapse">
+      <tr style="border-bottom: 2px solid black">
+        <td style="padding: 5px"><h3 style="margin:0"><%= link_to beer.name, "/beers/#{beer.id}" %></h3></td>
+        <td style="text-align: right; padding: 5px">Links</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding: 5px">
+          <p style="margin:0; padding: 0;"><%= link_to beer.brewery.name, "/breweries/#{beer.brewery.id}" %> | Style: <%= beer.style %><br>
+          ABV: <%= beer.abv %>% | IBUs: <%= beer.ibu %> | Currently In Production?: <%= beer.in_production ? "Yes" : "No" %></p>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr style="height: 15px"></tr>
 <% end %>
+</table>

@@ -1,8 +1,22 @@
 <h2>Breweries</h2>
 
-<% @breweries.each do |brewery| %>
-  <span style="font-size:20px; font-weight:bold;"><%= link_to brewery.name, "/breweries/#{brewery.id}" %></span><br>
-  <span style="font-size:10px">Added to records: <%= brewery.created_at %></span><br><br>
-<% end %>
-<br>
+<table style="width: 34%">
+  <% @breweries.each do |brewery| %>
+
+    <td><table style="border:2px solid black; width: 100%; border-collapse: collapse">
+      <tr style="border-bottom: 2px solid black">
+        <td style="padding: 5px"><h3 style="margin:0"><%= link_to brewery.name, "/breweries/#{brewery.id}" %></h3></td>
+        <td style="text-align: right; padding: 5px">Links</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding: 5px">
+          <p style="margin:0">Added to records: <%= brewery.created_at %></p>
+        </td>
+      </tr>
+      </table></td>
+    </tr>
+    <tr style="height: 15px"></tr>
+  <% end %>
+</table>
+
 <%= button_to "Add New Brewery", "/breweries/new", method: :get %>
