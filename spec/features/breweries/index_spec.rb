@@ -33,4 +33,5 @@ RSpec.describe 'breweries#index', type: :feature do
     expect(page).to have_content(@odell.created_at)
     
   end
+
 end
