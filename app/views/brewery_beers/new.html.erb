@@ -1,0 +1,28 @@
+<%= form_with url: "/breweries/#{@brewery.id}/beers", method: :post, local: true do |form| %>
+  <table>
+    <tr><td colspan="2"><h2>Add New Beer for <%= "#{@brewery.name}" %></h2></td></tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :name, "Name: " %></td>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :style, "Style: " %></td>
+      <td><%= form.text_field :style %> </td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :abv, "ABV: " %></td>
+      <td><%= form.text_field :abv %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :ibu, "IBU: " %></td>
+      <td><%= form.text_field :ibu %></td>
+    </tr>
+    <tr>
+      <td style="text-align: end"><%= form.label :in_production, "Currently In Production: " %></td>
+      <td><%= form.check_box :in_production %></td>
+    </tr>
+    <tr><td colspan="2" height="15px"> </td></tr>
+    <tr><td></td><td><%= form.submit "Add Beer" %></td></tr>
+  </table>
+
+<% end %>
