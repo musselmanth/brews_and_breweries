@@ -4,11 +4,11 @@ RSpec.describe 'breweries#index', type: :feature do
   before(:each) do
     @bells = Brewery.create(name: "Bell's Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
     @odell = Brewery.create(name: "Odell Brewing Company", city:"Fort Collins", state:"CO", ba_member: true, annual_production: 225000, founded: 1989)
-    @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", limited_release: false)
-    @bells.beers.create(name: "Oberon", abv: 5.8, ibu: 10, style:"Wheat", limited_release: true)
-    @bells.beers.create(name: "Hopslam", abv:10.0 , ibu:65 , style:"Double IPA", limited_release: true)
-    @odell.beers.create(name: "90 Shilling", abv: 5.3, ibu: 27, style:"Red Ale", limited_release: false)
-    @odell.beers.create(name: "Sippin Pretty", abv: 4.5, ibu: 0, style:"Fruited Sour", limited_release: false)
+    @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", in_production: false)
+    @bells.beers.create(name: "Oberon", abv: 5.8, ibu: 10, style:"Wheat", in_production: true)
+    @bells.beers.create(name: "Hopslam", abv:10.0 , ibu:65 , style:"Double IPA", in_production: true)
+    @odell.beers.create(name: "90 Shilling", abv: 5.3, ibu: 27, style:"Red Ale", in_production: false)
+    @odell.beers.create(name: "Sippin Pretty", abv: 4.5, ibu: 0, style:"Fruited Sour", in_production: false)
   end
 
   it 'shows information about a particular brewery' do

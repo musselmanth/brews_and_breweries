@@ -5,7 +5,7 @@ RSpec.describe 'Application' do
 
     before :each do
       @bells = Brewery.create(name: "Bell's Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
-      @two_hearted = @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", limited_release: false)
+      @two_hearted = @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", in_production: false)
     end
 
     it 'has link to parents and children index on every page' do

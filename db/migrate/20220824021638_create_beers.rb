@@ -5,7 +5,7 @@ class CreateBeers < ActiveRecord::Migration[5.2]
       t.float :abv
       t.integer :ibu
       t.string :style
-      t.boolean :limited_release
+      t.boolean :in_production
       t.timestamps
     end
   end
