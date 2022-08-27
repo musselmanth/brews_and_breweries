@@ -46,6 +46,7 @@
     </tr>  
     <tr style="height:15px"><tr>
     <tr><td colspan="2" style="text-align:center"><%= button_to "Edit #{@beer.name} Info", "/beers/#{@beer.id}/edit", method: :get %></td></tr>
+    <tr><td colspan="2" style="text-align:center"><%= button_to "Delete #{@beer.name}", "/beers/#{@beer.id}", method: :delete %></td></tr>
 
   </table>
 
