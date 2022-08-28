@@ -13,9 +13,13 @@ RSpec.describe 'beers#show', type: :feature do
 
     expect(page).to have_content(@hopslam.name)
     expect(page).to have_content("Bell's Brewery")
-    expect(page).to have_content("ABV: 10.0%")
-    expect(page).to have_content("IBUs: 65")
-    expect(page).to have_content("Currently In Production?: Yes")
-    expect(page).to have_content("Style: Double IPA")
+    expect(page).to have_content("ABV:")
+    expect(page).to have_content("10.0%")
+    expect(page).to have_content("IBUs:")
+    expect(page).to have_content("65")
+    expect(page).to have_content("Currently in Production?:")
+    expect(page).to have_content("Yes")
+    expect(page).to have_content("Style:")
+    expect(page).to have_content("Double IPA")
   end
 end

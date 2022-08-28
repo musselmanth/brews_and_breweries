@@ -38,8 +38,10 @@ RSpec.describe 'Update Beers' do
     click_button("Update Beer")
 
     expect(current_path).to eq("/beers/#{@ninety_shilling.id}")
-    expect(page).to have_content("Currently In Production?: No")
-    expect(page).to have_content("Style: Stout")
+    expect(page).to have_content("Currently in Production?:")
+    expect(page).to have_content("No")
+    expect(page).to have_content("Style:")
+    expect(page).to have_content("Stout")
 
   end
 
