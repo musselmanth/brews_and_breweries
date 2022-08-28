@@ -51,4 +51,20 @@ RSpec.describe 'breweries#index', type: :feature do
     end
   end
 
+  it 'has links to delete breweries' do
+    visit("/breweries")
+
+    expect(page).to have_content("Delete")
+    expect(page).to have_content(@bells.name)
+    expect(page).to have_content(@crooked_stave.name)
+
+    within("table##{@bells.id}") do
+      click_link("Delete")
+      expect(current_path).to eq("/breweries")
+    end
+    
+    expect(page).to_not have_content(@bells.name)
+    expect(page).to have_content(@crooked_stave.name)
+  end
+
 end

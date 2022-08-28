@@ -27,13 +27,26 @@ RSpec.describe 'beers#index', type: :feature do
       click_link("Edit")
       expect(current_path).to eq("/beers/#{@oberon.id}/edit")
     end
-  end
 
-  it 'each edit link goes to the right beer' do
     visit("/beers")
     within("table##{@ninety_shilling.id}") do
       click_link("Edit")
       expect(current_path).to eq("/beers/#{@ninety_shilling.id}/edit")
     end
+  end
+
+  it 'has links to delete beers' do
+    visit("/beers")
+    expect(page).to have_link("Delete")
+    expect(page).to have_content(@oberon.name)
+    expect(page).to have_content(@ninety_shilling.name)
+    
+
+    within("table##{@oberon.id}") do
+      click_link("Delete")
+    end
+    expect(current_path).to eq("/beers")
+    expect(page).to_not have_content(@oberon.name)
+    expect(page).to have_content(@ninety_shilling.name)
   end
 end
