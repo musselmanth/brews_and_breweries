@@ -1,5 +1,5 @@
 <h2>Breweries</h2>
-
+<p><%= link_to "Sort By Number of Beers on Record", sort_by: "beer_count" %></p>
 <table style="width: 34%">
   <% @breweries.each do |brewery| %>
 
@@ -8,6 +8,9 @@
         <td style="padding: 5px"><h3 style="margin:0"><%= link_to brewery.name, "/breweries/#{brewery.id}" %></h3></td>
         <td style="text-align: right; padding: 5px"><%= link_to "Edit", "/breweries/#{brewery.id}/edit" %> | <%= link_to "Delete", "/breweries/#{brewery.id}", method: :delete %></td>
       </tr>
+      <% if params[:sort_by] == "beer_count" %>
+        <tr><td colspan="2"style ="padding:5px"><%= brewery.beer_count %> beers on record.</td></tr>
+      <% end %>
       <tr>
         <td colspan="2" style="padding: 5px">
           <p style="margin:0">Added to records: <%= brewery.created_at %></p>

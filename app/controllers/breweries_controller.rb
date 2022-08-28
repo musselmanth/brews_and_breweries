@@ -1,6 +1,7 @@
 class BreweriesController < ApplicationController
   def index
     @breweries = Brewery.all
+    @breweries = @breweries.sort_by(&:beer_count).reverse if params[:sort_by] == "beer_count"
   end
 
   def show
