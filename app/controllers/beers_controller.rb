@@ -17,6 +17,11 @@ class BeersController < ApplicationController
     redirect_to("/beers/#{params[:beer_id]}")
   end
 
+  def destroy
+    Beer.destroy(params[:beer_id])
+    redirect_to("/beers")
+  end
+
   def beer_params
     params.permit(:name, :style, :abv, :ibu, :in_production)
   end
