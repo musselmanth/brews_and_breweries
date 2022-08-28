@@ -1,6 +1,13 @@
 <h2><%= @brewery.name %> Beers</h2>
 <p><%= link_to "Return to Brewery Page", "/breweries/#{@brewery.id}" %></p>
-<p><%= link_to "Sort By Name", sort_by: :name %>
+<p><%= link_to "Sort By Name", sort_by: :name %></p>
+<p>
+  <%= form_with url: "/breweries/#{@brewery.id}/beers", method: :get, local: true do |form| %>
+    <%= form.label :min_abv, "Only Show Beers with ABV Greater Than: " %>
+    <%= form.text_field :min_abv, value: @min_abv %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</p>
 <table style="width: 34%">
   <% @beers.each do |beer| %>
       <td><table id="<%= beer.id %>"style="border:2px solid black; width: 100%; border-collapse: collapse">
