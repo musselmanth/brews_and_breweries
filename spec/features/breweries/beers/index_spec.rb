@@ -65,4 +65,18 @@ RSpec.describe 'breweries_beers#index', type: :feature do
 
   end
 
+  it 'has a form to filter by a min abv' do
+    visit("/breweries/#{@bells.id}/beers")
+
+    expect(page).to have_content("Only Show Beers with ABV Greater Than:")
+    expect(page).to have_content(@oberon.name)
+    expect(page).to have_content(@hopslam.name)
+
+    fill_in(:min_abv, with: "7.0")
+    click_button("Submit")
+    
+    expect(page).to_not have_content(@oberon.name)
+    expect(page).to have_content(@hopslam.name)
+  end
+
 end

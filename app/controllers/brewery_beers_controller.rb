@@ -1,7 +1,10 @@
 class BreweryBeersController < ApplicationController
   def index
+    sort_by = params[:sort_by]
+    @min_abv = params[:min_abv]
+    @min_abv ||= 0.0
     @brewery = Brewery.find(params[:brewery_id])
-    @beers = @brewery.beers.order(params[:sort_by])
+    @beers = @brewery.beers.where("abv >= #{@min_abv}").order(params[:sort_by])
   end
 
   def new
