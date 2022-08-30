@@ -22,4 +22,16 @@ RSpec.describe Brewery, type: :model do
     expect(@bells.beers_filtered_by_abv(6.0)).to eq([@two_hearted, @hopslam])
     expect(@bells.beers_filtered_by_abv(8.0)).to eq([@hopslam])
   end
+
+  describe 'class methods' do
+    it 'can return the breweries sorted by beer count' do
+      expect(Brewery.sort_by_count).to eq([@bells, @odell])
+      
+      @odell.beers.create(name: "St. Lupulin", abv: 6.5, ibu: 46, style: "Pale Ale", in_production: true)
+      @odell.beers.create(name: "Isolation Ale", abv: 6.1, ibu: 27, style: "Winter Warmer", in_production: true)
+      @odell.beers.create(name: "Easy Street", abv: 4.6, ibu: 21, style: "American Pale Wheat", in_production: true)
+      
+      expect(Brewery.sort_by_count).to eq([@odell, @bells])
+    end
+  end
 end
