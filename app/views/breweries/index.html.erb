@@ -8,7 +8,7 @@
 <% end %><br>
 <%= form_with url: "/breweries", method: :get, local: true, id: 'partial_search_form' do |form| %>
   <%= form.hidden_field(:view, value: 'search_partial') %>
-  <%= form.label :search_part, "Search Parial: " %>
+  <%= form.label :search_part, "Search Partial: " %>
   <%= form.text_field :search_part, value: params[:search_part] %>
   <%= form.submit "Search" %>
 <% end %>

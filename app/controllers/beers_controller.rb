@@ -1,6 +1,13 @@
 class BeersController < ApplicationController
   def index
-    @beers = Beer.in_production
+    @beers = case params[:view]
+      when 'search_exact'
+        Beer.in_production.search_exact(params[:search_exact])
+      when 'search_partial'
+        Beer.in_production.search_partial(params[:search_part])
+      else
+        Beer.in_production
+    end
   end
 
   def show
