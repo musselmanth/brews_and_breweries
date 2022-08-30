@@ -39,6 +39,8 @@ class BreweriesController < ApplicationController
     redirect_to("/breweries")
   end
 
+  private
+
   def brewery_params
     params.permit(:name, :ba_member, :city, :state, :founded, :annual_production)
   end

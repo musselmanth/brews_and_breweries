@@ -29,6 +29,8 @@ class BeersController < ApplicationController
     redirect_to("/beers")
   end
 
+  private
+
   def beer_params
     params.permit(:name, :style, :abv, :ibu, :in_production)
   end

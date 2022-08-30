@@ -15,6 +15,8 @@ class BreweryBeersController < ApplicationController
     redirect_to("/breweries/#{params[:brewery_id]}/beers")
   end
 
+  private
+
   def beer_params
     params.permit(:name, :brewery_id, :style, :abv, :ibu, :in_production)
   end
