@@ -6,6 +6,7 @@ RSpec.describe Brewery, type: :model do
   before(:each) do
     @bells = Brewery.create(name: "Bell's Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
     @odell = Brewery.create(name: "Odell Brewing Company", city:"Fort Collins", state:"CO", ba_member: true, annual_production: 225000, founded: 1989)
+    @deschutes = Brewery.create(name: "Deschutes Brewery", city:"Bend", state:"OR", ba_member: true, annual_production: 250000, founded: 1988)
 
     @two_hearted = @bells.beers.create(name: "Two Hearted Ale", abv: 7.0, ibu: 55, style:"IPA", in_production: false)
     @oberon = @bells.beers.create(name: "Oberon", abv: 5.8, ibu: 10, style:"Wheat", in_production: true)
@@ -25,14 +26,25 @@ RSpec.describe Brewery, type: :model do
 
   describe 'class methods' do
     it 'can return the breweries sorted by beer count' do
-      expect(Brewery.sort_by_count).to eq([@bells, @odell])
+      expect(Brewery.sort_by_count).to eq([@bells, @odell, @deschutes])
       
       @odell.beers.create(name: "St. Lupulin", abv: 6.5, ibu: 46, style: "Pale Ale", in_production: true)
       @odell.beers.create(name: "Isolation Ale", abv: 6.1, ibu: 27, style: "Winter Warmer", in_production: true)
       @odell.beers.create(name: "Easy Street", abv: 4.6, ibu: 21, style: "American Pale Wheat", in_production: true)
       
-      expect(Brewery.sort_by_count).to eq([@odell, @bells])
+      expect(Brewery.sort_by_count).to eq([@odell, @bells, @deschutes])
     end
+
+    it 'can sort by date/time created' do
+      expect(Brewery.all).to eq([@bells, @odell, @deschutes])
+      expect(Brewery.sort_by_created).to eq([@deschutes, @odell, @bells])
+
+      @odell.update(ba_member: false)
+
+      expect(Brewery.all).to eq([@bells, @deschutes, @odell])
+      expect(Brewery.sort_by_created).to eq([@deschutes, @odell, @bells])
+    end
+
     describe 'search' do
       before(:each) do
         @bells_other = Brewery.create(name: "Bell's Other Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
@@ -47,7 +59,7 @@ RSpec.describe Brewery, type: :model do
 
       it 'can return a list of breweries that contain a search parameter' do
         expect(Brewery.search_partial("Bell's")).to eq([@bells, @bells_other])
-        expect(Brewery.search_partial("Brew")).to eq([@bells, @odell, @bells_other])
+        expect(Brewery.search_partial("Brew")).to eq([@bells, @odell, @deschutes, @bells_other])
         expect(Brewery.search_partial("Crooked")).to eq([@crooked_stave])
       end
     end

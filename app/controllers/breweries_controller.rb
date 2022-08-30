@@ -8,7 +8,7 @@ class BreweriesController < ApplicationController
       when 'search_partial'
         Brewery.search_partial(params[:search_part])
       else
-        Brewery.all
+        Brewery.sort_by_created
     end
   end
 
