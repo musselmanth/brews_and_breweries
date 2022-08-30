@@ -1,4 +1,8 @@
+require_relative 'searchable'
+
 class Beer < ApplicationRecord
+  extend Searchable
+
   belongs_to :brewery
 
   def self.sort_by_name

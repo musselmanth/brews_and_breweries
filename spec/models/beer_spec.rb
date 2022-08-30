@@ -47,13 +47,13 @@ RSpec.describe Beer, type: :model do
         @different_expedition = @odell.beers.create(name: "Expedition Stout", abv: 5.5, ibu: 15, style: "Stout", in_production: true)
       end
 
-      xit 'can return exact search results' do
+      it 'can return exact search results' do
         expect(Beer.search_exact("Best Brown Ale")).to eq([@best_brown])
         expect(Beer.search_exact("Expedition Stout")).to eq([@expedition, @different_expedition])
         expect(Beer.search_exact("Different Brown Ale")).to eq([@different_brown])
       end
 
-      xit 'can return parial search results' do
+      it 'can return parial search results' do
         expect(Beer.search_partial("Brown Ale")).to eq([@best_brown, @different_brown])
         expect(Beer.search_partial("Expedition")).to eq([@expedition, @different_expedition])
       end
