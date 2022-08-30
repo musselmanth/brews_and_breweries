@@ -4,4 +4,8 @@ class Beer < ApplicationRecord
   def self.sort_by_name
     self.order(:name)
   end
+
+  def self.in_production
+    self.where(in_production: true)
+  end
 end

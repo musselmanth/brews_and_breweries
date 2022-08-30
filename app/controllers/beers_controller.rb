@@ -1,6 +1,6 @@
 class BeersController < ApplicationController
   def index
-    @beers = Beer.where(in_production: true)
+    @beers = Beer.in_production
   end
 
   def show
