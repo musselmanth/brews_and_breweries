@@ -18,7 +18,7 @@ class Brewery < ApplicationRecord
   end
 
   def self.search_partial(search_phrase)
-    self.where("name ILIKE ?", "%#{search_phrase}%")
+    self.where("name ILIKE ?", "%#{sanitize_sql_like(search_phrase)}%")
   end
   
 end
