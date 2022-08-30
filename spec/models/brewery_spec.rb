@@ -38,7 +38,7 @@ RSpec.describe Brewery, type: :model do
         @bells_other = Brewery.create(name: "Bell's Other Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
         @crooked_stave = Brewery.create(name: "Crooked Stave", city:"Denver", state:"CO", ba_member: false, annual_production: 60000, founded: 2010)
       end
-      
+
       it 'can return a list of breweries that match a name search' do
         expect(Brewery.search_exact("Bell's Brewery")).to eq([@bells])
         expect(Brewery.search_exact("Bell's")).to eq([])
@@ -47,7 +47,7 @@ RSpec.describe Brewery, type: :model do
 
       it 'can return a list of breweries that contain a search parameter' do
         expect(Brewery.search_partial("Bell's")).to eq([@bells, @bells_other])
-        expect(Brewery.search_partial("Brew")).to eq([@bells, @bells_other, @odell])
+        expect(Brewery.search_partial("Brew")).to eq([@bells, @odell, @bells_other])
         expect(Brewery.search_partial("Crooked")).to eq([@crooked_stave])
       end
     end

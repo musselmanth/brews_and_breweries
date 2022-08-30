@@ -12,5 +12,13 @@ class Brewery < ApplicationRecord
   def self.sort_by_count
     self.all.sort_by(&:beer_count).reverse
   end
+
+  def self.search_exact(search_phrase)
+    self.where(name: search_phrase)
+  end
+
+  def self.search_partial(search_phrase)
+    self.where("name ILIKE ?", "%#{search_phrase}%")
+  end
   
 end
