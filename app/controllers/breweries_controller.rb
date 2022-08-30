@@ -1,8 +1,12 @@
 class BreweriesController < ApplicationController
   def index
-    @breweries = case params[:sort_by_count]
-      when 'true'
+    @breweries = case params[:view]
+      when 'sort_by_count'
         Brewery.sort_by_count
+      when 'search_exact'
+        Brewery.search_exact(params[:search_exact])
+      when 'search_partial'
+        Brewery.search_partial(params[:search_part])
       else
         Brewery.all
     end
