@@ -125,7 +125,7 @@ RSpec.describe 'breweries#index', type: :feature do
 
     it 'can find partial search results' do
       visit("/breweries")
-      fill_in("Search Parial", with: "Bell's")
+      fill_in("Search Partial", with: "Bell's")
       within("form#partial_search_form") do
         click_button("Search")
       end
