@@ -49,4 +49,34 @@ RSpec.describe 'beers#index', type: :feature do
     expect(page).to_not have_content(@oberon.name)
     expect(page).to have_content(@ninety_shilling.name)
   end
+
+  describe 'search functions' do
+    before(:each) do
+      @oberon_lim = @bells.beers.create(name: "Oberon Limited", abv: 5.8, ibu: 10, style:"Wheat", in_production: true)
+    end
+
+    it 'returns exact search results' do
+      visit("/beers")
+      fill_in("Search Exact", with: "Oberon")
+      within("form#exact_search_form") do
+        click_button("Search")
+      end
+
+      expect(page).to have_content("Oberon")
+      expect(page).to_not have_content("Oberon Limited")
+      expect(page).to_not have_content("Hopslam")
+    end
+
+    it 'returns partial search results' do
+      visit("/beers")
+      fill_in("Search Partial", with: "Oberon")
+      within("form#partial_search_form") do
+        click_button("Search")
+      end
+
+      expect(page).to have_content("Oberon")
+      expect(page).to have_content("Oberon Limited")
+      expect(page).to_not have_content("Hopslam")
+    end
+  end
 end

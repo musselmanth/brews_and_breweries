@@ -1,5 +1,21 @@
 <h2>Breweries</h2>
-<p><%= link_to "Sort By Number of Beers on Record", sort_by_count: 'true' %></p>
+<p><%= link_to "Sort By Number of Beers on Record", view: 'sort_by_count' %><br>
+<%= form_with url: "/breweries", method: :get, local: true, id: 'exact_search_form' do |form| %>
+  <%= form.hidden_field(:view, value: 'search_exact') %>
+  <%= form.label :search_exact, "Search Exact: " %>
+  <%= form.text_field :search_exact, value: params[:search_exact] %>
+  <%= form.submit "Search" %>
+<% end %><br>
+<%= form_with url: "/breweries", method: :get, local: true, id: 'partial_search_form' do |form| %>
+  <%= form.hidden_field(:view, value: 'search_partial') %>
+  <%= form.label :search_part, "Search Partial: " %>
+  <%= form.text_field :search_part, value: params[:search_part] %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+</p>
+
 <table style="width: 34%">
   <% @breweries.each do |brewery| %>
 
@@ -8,7 +24,7 @@
         <td style="padding: 5px"><h3 style="margin:0"><%= link_to brewery.name, "/breweries/#{brewery.id}" %></h3></td>
         <td style="text-align: right; padding: 5px"><%= link_to "Edit", "/breweries/#{brewery.id}/edit" %> | <%= link_to "Delete", "/breweries/#{brewery.id}", method: :delete %></td>
       </tr>
-      <% if params[:sort_by_count] == 'true' %>
+      <% if params[:view] == 'sort_by_count' %>
         <tr><td colspan="2"style ="padding:5px"><%= brewery.beer_count %> beers on record.</td></tr>
       <% end %>
       <tr>

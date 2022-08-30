@@ -105,4 +105,37 @@ RSpec.describe 'breweries#index', type: :feature do
 
   end
 
+  describe 'search features' do
+    before(:each) do
+      @bells_other = Brewery.create(name: "Bell's Other Brewery", city:"Comstock", state:"MI", ba_member: true, annual_production: 310000, founded: 1985)
+      @crooked_stave = Brewery.create(name: "Crooked Stave", city:"Denver", state:"CO", ba_member: false, annual_production: 60000, founded: 2010)
+    end
+
+    it 'can find exact search results' do
+      visit("/breweries")
+      fill_in("Search Exact", with: "Bell's Brewery")
+      within("form#exact_search_form") do
+        click_button("Search")
+      end
+
+      expect(page).to have_content("Bell's Brewery")
+      expect(page).to_not have_content("Bell's Other Brewery")
+      expect(page).to_not have_content("Crooked Stave")
+    end
+
+    it 'can find partial search results' do
+      visit("/breweries")
+      fill_in("Search Partial", with: "Bell's")
+      within("form#partial_search_form") do
+        click_button("Search")
+      end
+
+      expect(page).to have_content("Bell's Brewery")
+      expect(page).to have_content("Bell's Other Brewery")
+      expect(page).to_not have_content("Crooked Stave")
+      expect(page).to_not have_content("Odell")
+    end
+
+  end
+
 end

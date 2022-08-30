@@ -1,4 +1,8 @@
+require_relative 'searchable'
+
 class Brewery < ApplicationRecord
+  extend Searchable
+
   has_many :beers, dependent: :destroy
 
   def beer_count
