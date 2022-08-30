@@ -20,8 +20,8 @@ RSpec.describe 'breweries#index', type: :feature do
 
   it 'lists the parent index in the order they were created' do
     visit('/breweries')
-    expect(@crooked_stave.name).to appear_before(@bells.name)
-    expect(@bells.name).to appear_before(@odell.name)
+    expect(@odell.name).to appear_before(@bells.name)
+    expect(@bells.name).to appear_before(@crooked_stave.name)
   end
 
   it 'shows on the page when it was created.' do
@@ -80,8 +80,8 @@ RSpec.describe 'breweries#index', type: :feature do
     it 'has a link to sort by number of beers' do
       visit("/breweries")
 
-      expect(@crooked_stave.name).to appear_before(@bells.name)
-      expect(@bells.name).to appear_before(@odell.name)
+      expect(@odell.name).to appear_before(@bells.name)
+      expect(@bells.name).to appear_before(@crooked_stave.name)
 
       click_link("Sort By Number of Beers on Record")
       
