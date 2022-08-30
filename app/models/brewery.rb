@@ -8,5 +8,9 @@ class Brewery < ApplicationRecord
   def beers_filtered_by_abv(min_abv)
     self.beers.where("abv >= #{min_abv}")
   end
+
+  def self.sort_by_count
+    self.all.sort_by(&:beer_count).reverse
+  end
   
 end
