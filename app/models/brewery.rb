@@ -16,5 +16,9 @@ class Brewery < ApplicationRecord
   def self.sort_by_count
     self.all.sort_by(&:beer_count).reverse
   end
+
+  def self.sort_by_created
+    self.order(created_at: :desc)
+  end
   
 end
