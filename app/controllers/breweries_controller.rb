@@ -1,7 +1,11 @@
 class BreweriesController < ApplicationController
   def index
-    @breweries = Brewery.all
-    @breweries = @breweries.sort_by(&:beer_count).reverse if params[:sort_by] == "beer_count"
+    @breweries = case params[:sort_by_count]
+      when 'true'
+        Brewery.sort_by_count
+      else
+        Brewery.all
+    end
   end
 
   def show
